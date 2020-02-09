@@ -7,5 +7,5 @@ This project is a scrapper in python for Craigslist website to help a friend of 
 ```bash
 sudo apt install python3-pip
 pip install scrapy
-scrapy runspider craigspider.py
+scrapy crawl craigspider -o results.json
 ```
