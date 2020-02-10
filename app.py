@@ -26,7 +26,7 @@ def scrap():
     subprocess.check_output(
         ['scrapy', 'crawl', spider_name, "-o", "results.json"])
     with open("results.json") as items_file:
-        return items_file.read()
+        return {"data": json.load(items_file)}
 
 
 @app.route("/view")
@@ -37,7 +37,8 @@ def view():
 
 @app.route("/results")
 def results():
-    return {"data": data}
+    with open("results.json") as items_file:
+        return json.load(items_file)
 
 
 if __name__ == '__main__':
