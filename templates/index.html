@@ -1,0 +1,19 @@
+<!-- templates/index.html -->
+<html>
+  <head>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <title>Results</title>
+  </head>
+
+  <body>
+    <p id="json" json="{{message}}"></p>
+  </body>
+</html>

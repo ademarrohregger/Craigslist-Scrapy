@@ -10,10 +10,13 @@ class CraigSpider(scrapy.Spider):
 
     def parse(self, response):
         for result in response.css('.result-row'):
+            title = result.css('.result-title ::text').get()
+            cleanTitle = ''.join(c for c in title if c not in '\'')
             yield {
-                'title': result.css('.result-title ::text').get(),
+                'title': cleanTitle,
                 'url': result.css('.result-title ::attr(href)').get(),
                 'price': result.css('.result-price ::text ').get(),
+                # 'img': result.css(".result-image img::attr(src)").get(),
                 'date': result.css('.result-date ::text').get(),
             }
 
